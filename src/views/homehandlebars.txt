@@ -1,0 +1,62 @@
+<div style="background-color:cornsilk">
+<div class="addButton" id="{{user.cart._id}}">
+      {{!-- {{#if user.isAdmin }}
+     <p>Welcome {{user.first_name}}. You are logged in as admin! </p>
+     {{else}}
+     <p>Welcome {{user.first_name}}. You are logged in as user! Your cart is {{user.cart._id}}</p>
+     {{/if}}      --}}
+      
+     <p>Welcome {{user.first_name}}. You are logged in as {{user.role}}! Your cart is {{user.cart._id}}</p>  
+     <div style="position: fixed; top: 20px; right: 20px;"><a href="http://localhost:8080/carts/{{user.cart._id}}" align="right"> <i class="fas fa-shopping-cart"></i>
+</a></div>
+     <a href="/api/users/logout"><button>Salir</button></a>
+     {{#each products}} 
+ <ul>
+                <li style="list-style:none">{{this.title}}</li> 
+                {{!-- <li style="list-style:none">{{this.description}}</li> --}}
+                <img src="{{this.thumbnail}}" alt="{{this.title}}" style="max-width: 200px;">
+                <li style="list-style:none"> ${{this.price}}</li>
+</ul>
+     {{!-- <div><button onclick="addToCart(this._id)">Agregar al carrito</button></div> --}}
+   <div>  <button data-cart-id="{{user.cart._id}}" onclick="addToCart('{{this._id}}','{{../user.cart._id}}')">Agregar al carrito</button></div>
+     </br>
+     {{/each}}
+     {{#if hasPrevPage }}
+     {{!-- <a href="/?page={{prevPage}}&limit={{limit}}"><button>Anterior</button></a> --}}
+     <a href="{{prevLink}}"><button>Anterior</button></a>
+     {{/if}}
+     {{#if hasNextPage }}
+      <a href="{{nextLink}}"><button>Siguiente</button></a>
+     {{!-- <a href="/?page={{nextPage}}&limit={{limit}}"><button>Siguiente</button></a> --}}
+     {{/if}}     
+</div> 
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script src="/js/cart.js"></script>
+
+
+carts
+
+<div style="background-color:cornsilk">
+     <h1>Aquí el carrito {{cart._id}} </h1>
+
+<a href="http://localhost:8080/products"><button>Seguir comprando</button></a>
+<a href="http://localhost:8080/products"><button>Finalizar compra</button></a>
+</br>
+<hr>
+<div id="container">
+     {{#each cart.products}}
+    <p>{{this.product.title}}</p>
+    <img src="{{this.product.thumbnail}}" alt="{{this.title}}" style="max-width: 200px;">
+     <p>${{this.product.price}}</p>
+    <p>Cantidad: {{this.quantity}}</p>
+    <button onclick="incrementQuantity('{{this.product._id}}','{{../cart._id}}')">+</button>
+    <button onclick="decrementQuantity('{{this.product._id}}','{{../cart._id}}','{{this.quantity}}')">-</button>
+    <button onclick="removeProduct('{{this.product._id}}','{{../cart._id}}')">Eliminar producto</button>
+    <hr>
+    </br>
+     {{/each}}
+</div>
+<div id="reloadSymbol" style="display: none;">&#x21BB;</div>
+</div>
+<script src="/js/cart.js"></script>

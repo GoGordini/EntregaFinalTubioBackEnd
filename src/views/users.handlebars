@@ -1,0 +1,24 @@
+<div style="background-color: #f8f9fa; font-family: 'Roboto', sans-serif;">
+    <h1>User Handler for user {{users._id}}</h1>
+    <div>
+    <p>Name: {{users.first_name}}</p>
+    <p>Last Name: {{users.last_name}}</p>
+    <p>Email: {{users.email}}</p>
+    <p>Age: {{users.age}}</p>
+    <p>Cart: {{users.cart._id}}</p>
+    <p>Role: {{users.role}}</p>
+    <p>Last Connection: {{users.last_connection}}</p>
+</div>
+        <button type="button"  onclick="deleteUser('{{users._id}}')">Delete User</button>
+         {{#if userIsPremium }}
+        <button type="button" onclick="makeUser('{{users._id}}')">Update to User</button>
+     {{else}}
+       <button type="button" onclick="makePremium('{{users._id}}')">Update to Premium</button>
+     {{/if}}      
+      
+ 
+    <div>
+        <br/>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/users.js"></script>
+

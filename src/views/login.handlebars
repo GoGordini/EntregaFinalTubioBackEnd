@@ -1,0 +1,49 @@
+<div style="max-width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f8f9fa; font-family: 'Roboto', sans-serif;">
+    <h1 style="text-align: center;">Login</h1>
+    <form id="loginForm" style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 5px; margin-top: 5px;">Email</label>
+        <input name="email" style="width: calc(100% - 22px); padding: 10px; border: 1px solid #ccc; border-radius: 3px; margin-right: 10px;">
+        <br/>
+        <label style="display: block; margin-bottom: 5px; margin-top: 5px">Contraseña</label>
+        <input name="password" type="password" style="width: calc(100% - 22px); padding: 10px; border: 1px solid #ccc; border-radius: 3px;">
+        <br/>
+        <input type="submit" value="Ingresar" style="width: 100%; padding: 10px; background-color: #ccc; color: #333; border: none; border-radius: 3px; cursor: pointer; margin-top: 10px;">
+    </form>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <a href="/api/sessions/github" style="text-decoration: none;">
+            <button style="padding: 10px 20px; background-color: #333; color: white; border: none; border-radius: 3px; cursor: pointer;">Ingresar con GitHub</button>
+        </a>
+    </div>
+    <p style="text-align: center;">No estás registrado? <a href="/register" style="color:gray; text-decoration: none;">Regístrate aquí</a></p>
+    <div style="text-align: center;">
+        <a href="/restore" style="text-decoration: none;">
+            <button style="padding: 10px 20px; background-color: #ccc; color: #333; border: none; border-radius: 3px; cursor: pointer;">Olvidé mi contraseña</button>
+        </a>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/login.js"></script>
+
+
+{{!-- <div>
+    <h1>Login</h1>
+    <form id="loginForm">
+        <label>Email</label>
+        <input name="email">
+        <br/>
+        <label>Contraseña</label>
+        <input name="password" type="password">
+        <br/>
+        <input type="submit">
+    </form>
+    <div>
+        <br/>
+    <a href="/api/sessions/github"><button>Ingresar con github</button></a>
+    </div>
+    <p>No estas registrado? <a href="/register">Registrate aquí</a></p>
+</div>
+</div>
+    <a href="/restore"><button>Olvidé mi contraseña</button></a>
+</div>
+<script src="/js/login.js"></script> --}}
+

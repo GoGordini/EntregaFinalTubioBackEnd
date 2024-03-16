@@ -1,0 +1,33 @@
+<div style="background-color: #f8f9fa; font-family: 'Roboto', sans-serif;">
+    <div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 20px;">
+        {{#each users}}
+        <div>
+            <div>
+                <p style="font-size: 1.2em; margin-bottom: 10px;">Name: {{this.first_name}}</p>
+                <p style="font-size: 1.2em; margin-bottom: 10px;">Last Name: {{this.last_name}}</p>
+                <p style="font-size: 1.2em; margin-bottom: 10px;">Id: {{this._id}}</p>
+                <p style="font-size: 1.2em; margin-bottom: 10px;">Email: {{this.email}}</p>
+                <p style="font-size: 1.2em; margin-bottom: 10px;">Role: {{this.role}}</p>
+                <button onclick="modifyUser('{{this._id}}')" style="padding: 5px 15px; background-color: #ccc; color: #333; border: none; border-radius: 3px; cursor: pointer; margin-top: 5px;">Modify User</button>
+               <hr>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<script src="/js/users.js"></script>
+{{!-- <div>
+     {{#each users}} 
+ <ul>
+                <li>Name: {{this.first_name}}</li> 
+                <li>Last Name: {{this.last_name}}</li>
+                <li>Id: {{this._id}}</li>
+                <li>Role: {{this.role}}</li>
+</ul>
+   <div>  <button onclick="modifyUser('{{this._id}}')">Modify User</button></div>
+     </br>
+     {{/each}}
+</div> 
+
+<script src="/js/users.js"></script> --}}

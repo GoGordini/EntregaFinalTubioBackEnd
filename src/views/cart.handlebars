@@ -1,0 +1,57 @@
+{{!-- <div style="background-color: #f8f7f8; padding: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1 style="margin: 0;">Carrito de compras</h1>
+        <div>
+            <a href="http://localhost:8080/products"><button style="padding: 10px 20px; background-color: #ccc; color: #333; border: none; border-radius: 3px; cursor: pointer; margin-right: 10px;">Seguir comprando</button></a>
+            <button style="padding: 10px 20px; background-color: #ccc; color: #333; border: none; border-radius: 3px; cursor: pointer;" onclick="finishPurchase('{{cart._id}}')">Finalizar compra</button>        </div>
+    </div>
+
+    <hr>
+
+    <div id="container">
+        {{#each cart.products}}
+        <div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                <img src="{{this.product.thumbnail}}" alt="{{this.product.title}}" style="max-width: 100px; margin-right: 20px;">
+                <div>
+                    <h3 style="margin: 0; font-size: 18px;">{{this.product.title}}</h3>
+                    <p style="margin: 5px 0; font-size: 16px;">${{this.product.price}}</p>
+                    <p style="margin: 5px 0; font-size: 16px;">Cantidad: {{this.quantity}}</p>
+                </div>
+            </div>
+            <div>
+                <button style="padding: 5px 10px; background-color: gray; color: #fff; border: none; border-radius: 3px; cursor: pointer; margin-right: 5px; font-family: 'Roboto', sans-serif; font-size: 16px;" onclick="incrementQuantity('{{this.product._id}}','{{../cart._id}}')">+</button>
+                <button style="padding: 5px 10px; background-color: gray; color: #fff; border: none; border-radius: 3px; cursor: pointer; margin-right: 5px; font-family: 'Roboto', sans-serif; font-size: 16px;" onclick="decrementQuantity('{{this.product._id}}','{{../cart._id}}','{{this.quantity}}')">-</button>
+                <button style="padding: 5px 10px; background-color: gray; color: #fff; border: none; border-radius: 3px; cursor: pointer; font-family: 'Roboto', sans-serif; font-size: 16px;" onclick="removeProduct('{{this.product._id}}','{{../cart._id}}')">Eliminar producto</button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/cart.js"></script> --}}
+
+<div style="background-color:cornsilk">
+     <h1>Aquí el carrito {{cart._id}} </h1>
+
+<a href="http://localhost:8080/products"><button>Seguir comprando</button></a>
+<a href="http://localhost:8080/products"><button>Finalizar compra</button></a>
+</br>
+<hr>
+<div id="container">
+     {{#each cart.products}}
+    <p>{{this.product.title}}</p>
+    <img src="{{this.product.thumbnail}}" alt="{{this.title}}" style="max-width: 200px;">
+     <p>${{this.product.price}}</p>
+    <p>Cantidad: {{this.quantity}}</p>
+    <button onclick="incrementQuantity('{{this.product._id}}','{{../cart._id}}')">+</button>
+    <button onclick="decrementQuantity('{{this.product._id}}','{{../cart._id}}','{{this.quantity}}')">-</button>
+    <button onclick="removeProduct('{{this.product._id}}','{{../cart._id}}')">Eliminar producto</button>
+    <hr>
+    </br>
+     {{/each}}
+</div>
+<div id="reloadSymbol" style="display: none;">&#x21BB;</div>
+</div>
+<script src="/js/cart.js"></script>

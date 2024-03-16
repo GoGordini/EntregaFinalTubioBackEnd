@@ -1,0 +1,42 @@
+npm i multer
+
+En utils.js:
+
+import multer from "multer"
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, `${__dirname}/public/img/pets`)
+    },
+    filename: (req, file, cb) => {
+        cb(null, `${Date.now()}-${file.originalname}`)
+    }
+});
+
+const uploader = multer({
+    storage, onError: (err, next) => {
+        console.log(err.message);
+        next();
+    }
+})
+
+Luego agregar como middleware, poniendo:
+
+router.post('/:uid/documents', uploader.array('doc1',3), uploadDocuments)
+
+export const uploadDocuments = async (req,res) =>{
+    try{
+        const filename = req.file.filename;
+        if(!filename) return res.status(500).send({ status: 'error', error: 'Cannot upload file' });
+        req.user.userDocs = `http://localhost:8080/img/${filename}`; //referencia al doc
+        return res.send({status: "success", payload:filename})}
+    catch(error) {res.status(500).send({error:error.message})}
+}
+
+En postman se pone el body como form-data. En Key:  doc1 sin comillas y cambiar el type a file.
+
+Los archivos se cargan bien, pero devuelve: {
+    "error": "Cannot read properties of undefined (reading 'filename')"
+}
+
+Lo que necesito saber es cómo accedo al nombre de cada uno de los 3 archivos que puedo llegar a cargar como máximo.

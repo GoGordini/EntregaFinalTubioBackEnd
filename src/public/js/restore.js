@@ -23,7 +23,8 @@ form.addEventListener('submit', async (e) => {
                 window.location.replace("/login");
             }
         });
-    } else {
+    } 
+    if (responseUser.status===404) {
         Swal.fire({
             icon: 'error',
             text: 'El usuario ingresado no existe!',

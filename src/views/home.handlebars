@@ -4,7 +4,7 @@
             <h1 style="margin: 0; text-align: center;">¡Bienvenido {{user.first_name}}!</h1>
         </div>
         <div style="display: flex; align-items: center;">
-            <a href="/api/users/logout"><button style="padding: 10px 20px; background-color: #ccc; color: #333; border: none; border-radius: 3px; cursor: pointer;">Cerrar sesión</button></a>
+            <a href="/api/users/logout"><button style="padding: 10px 20px; margin-right: 5px; background-color: #ccc; color: #333; border: none; border-radius: 3px; cursor: pointer;">Cerrar sesión</button></a>
             <a href="http://localhost:8080/carts/{{user.cart._id}}">
                 <i class="fas fa-shopping-cart"></i>
             </a>
@@ -35,4 +35,6 @@
 </div>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{{!-- <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script> --}}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="/js/cart.js"></script>

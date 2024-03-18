@@ -24,13 +24,22 @@ form.addEventListener('submit', async (e) => {
                 window.location.replace("/login");}})}
                  else{
         if (responseUser.status === 401) {window.location.replace('/restore')
-       } else {
+       } 
+       if (responseUser.status=== 400) {
         Swal.fire({
         icon: 'error',
         text: 'La nueva contraseña debe ser diferente de la anterior',
         showConfirmButton: true,
         confirmButtonText: 'Aceptar'
     }).then(() => {
-    });}; 
+    });};
+    if (responseUser.status=== 404) {
+        Swal.fire({
+        icon: 'error',
+        text: 'El usuario ingresado no existe',
+        showConfirmButton: true,
+        confirmButtonText: 'Aceptar'
+    }).then(() => {
+    });};  
         }
     })

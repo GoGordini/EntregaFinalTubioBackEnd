@@ -27,6 +27,12 @@ export const createCart= async () => {
 
 export const getCart= async (cid) => {
     const cart = await cartManagerRepository.getCartByIdRepository(cid)
+    let totalPrice=0;
+    cart.products.forEach((product)=>{
+        product.partial=product.product.price*product.quantity
+        totalPrice+=product.product.price*product.quantity
+    })
+    cart.totalPrice=totalPrice
     return cart;
 }
 export const updateCart= async (cid,pid,quantity=1,user) => {

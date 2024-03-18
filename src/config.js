@@ -24,7 +24,8 @@ const configs = {
     twilio_auth_token: process.env.TWLIO_AUTH_TOKEN,
     twilio_number:process.env.TWILIO_NUMBER,
     userNodemailer: process.env.USER_NODEMAILER,
-    passwordNodemailer: process.env.PASSWORD_NODEMAILER
+    passwordNodemailer: process.env.PASSWORD_NODEMAILER,
+    secret: process.env.SECRET
 };
 
 export default configs;

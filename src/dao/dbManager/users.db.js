@@ -1,5 +1,5 @@
 import usersModel from "./models/users.model.js";
-import { twoDaysAgo } from "../../utils.js";
+import { createHash,twoDaysAgo } from "../../utils.js";
 
 export default class Users {
 constructor (){
@@ -43,5 +43,11 @@ deleteOneUser = async (uid)=>{
 save = async (user) => {
 const result = await usersModel.create(user);
 return result;
+}
+
+resetPassword = async (email,password) =>{
+    console.log(email,password)
+    const result = await usersModel.updateOne({email:email},{$set:{password:createHash(password)}})
+    return result;
 }
 }

@@ -24,15 +24,15 @@ import session from 'express-session';
 import {initializePassport} from "./config/passport.config.js"
 import passport from "passport";
 import configs from "./config.js";
-import SessionsRouter from './routes/sessions.test.router.js';
-import TestsRouter from './routes/tests.router.js';
+//import SessionsRouter from './routes/sessions.test.router.js';
+//import TestsRouter from './routes/tests.router.js';
 import sessionsRouter from "./routes/sessions.router.js"
 import cookieParser from "cookie-parser";
 import errorHandler from './middlewares/errors/index.js';
 import { addLogger } from './loggers.js';
 
-const testsRouter = new TestsRouter();
-const sessionTestsRouter = new SessionsRouter();
+// const testsRouter = new TestsRouter();
+// const sessionTestsRouter = new SessionsRouter();
 
 const app = express ();
 
@@ -58,7 +58,7 @@ app.use(session({ //esto debe ir antes de setear las rutas
         client: mongoose.connection.getClient(), //reutilizo la conexión a mongoose de arriba.
         ttl: 3600
     }),
-    secret: 'Coder5575Secret',
+    secret: configs.secret,
     resave: true, //nos sirve para poder refrescar o actualizar la sesión luego de un de inactivadad. En true no da problemas cuando aún no inicié sesión.
     saveUninitialized: true, //nos sirve para desactivar el almacenamiento de la session si el usuario aún no se ha identificado o aún no a iniciado sesión
     // cookie: {
@@ -88,8 +88,8 @@ const specs = swaggerJsdoc(swaggerOptions);
 
 app.use('/api/docs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs)) //levanta la interfaz gráfica.
 app.use("/", viewsRouter);
-app.use('/api/tests', testsRouter.getRouter());
-app.use('/api/sessiontests', sessionTestsRouter.getRouter());
+// app.use('/api/tests', testsRouter.getRouter());
+// app.use('/api/sessiontests', sessionTestsRouter.getRouter());
 app.use("/api/products",productsRouter);
 app.use("/api/carts",cartsRouter);
 app.use('/api/users', usersRouter);
@@ -113,7 +113,7 @@ app.use((req, res) => {
 
 app.use(errorHandler);
 
-const server= app.listen(8080, ()=>console.log("Server running"));
+const server= app.listen(configs.port, ()=>console.log("Server running"));
 //const socketServer = new Server(server);
 const io = new Server(server);
 app.set("socketio",io);
